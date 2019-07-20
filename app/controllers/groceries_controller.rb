@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class GroceriesController < ApplicationController
-  before_action :set_grocery, only: %i[show update destroy]
+class GroceriesController < OpenReadController
+  before_action :set_grocery, only: %i[update destroy]
 
   # GET /groceries
   def index
@@ -12,12 +12,12 @@ class GroceriesController < ApplicationController
 
   # GET /groceries/1
   def show
-    render json: @grocery
+    render json: Grocery.find(params[:id])
   end
 
   # POST /groceries
   def create
-    @grocery = Grocery.new(grocery_params)
+    @grocery = current_user.groceries.build(grocery_params)
 
     if @grocery.save
       render json: @grocery, status: :created, location: @grocery
@@ -44,7 +44,7 @@ class GroceriesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_grocery
-    @grocery = Grocery.find(params[:id])
+    @grocery = current_user.groceries.find(params[:id])
   end
 
   # Only allow a trusted parameter "white list" through.
