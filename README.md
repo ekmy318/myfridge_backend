@@ -5,11 +5,6 @@ App description
 - Ruby
 - Ruby on Rails
 - MongoDB
-- Javascript
-- HTML
-- jQuery
-- CSS/SCSS
-- Bootstrap
 
 ## The Development
 
