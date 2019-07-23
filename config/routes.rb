@@ -2,7 +2,10 @@
 
 Rails.application.routes.draw do
   # RESTful routes
-  resources :groceries, :examples, except: %i[new edit]
+  resources :examples, except: %i[new edit]
+
+  get '/groceries' => 'groceries#index'
+  post '/groceries' => 'groceries#create'
 
   get '/users' => 'users#index'
   get '/users/:id' => 'users#show'

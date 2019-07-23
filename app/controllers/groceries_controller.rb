@@ -1,18 +1,11 @@
 # frozen_string_literal: true
 
 class GroceriesController < OpenReadController
-  before_action :set_grocery, only: %i[update destroy]
+  before_action :set_grocery, only: %i[update destroy index]
 
   # GET /groceries
   def index
-    @groceries = Grocery.all
-
-    render json: @groceries
-  end
-
-  # GET /groceries/1
-  def show
-    render json: Grocery.find(params[:id])
+    render json: @grocery.all
   end
 
   # POST /groceries
