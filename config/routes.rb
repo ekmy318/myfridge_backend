@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   resources :examples, except: %i[new edit]
 
   get '/groceries' => 'groceries#index'
-  get '/groceries/all' => 'groceries#show'
   post '/groceries' => 'groceries#create'
+  get '/groceries/all' => 'groceries#show'
 
   get '/users' => 'users#index'
   get '/users/:id' => 'users#show'

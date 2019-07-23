@@ -19,7 +19,7 @@ class GroceriesController < OpenReadController
     @grocery = current_user.groceries.build(grocery_params)
 
     if @grocery.save
-      render json: @grocery, status: :created, location: @grocery
+      render json: @grocery, status: :created
     else
       render json: @grocery.errors, status: :unprocessable_entity
     end
