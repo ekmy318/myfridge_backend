@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   get '/groceries' => 'groceries#index'
   post '/groceries' => 'groceries#create'
+  delete '/groceries/:id' => 'groceries#destroy'
+  patch '/groceries/:id' => 'groceries#update'
   get '/groceries/all' => 'groceries#show'
 
   get '/users' => 'users#index'
