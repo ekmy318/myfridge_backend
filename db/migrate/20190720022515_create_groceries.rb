@@ -3,10 +3,10 @@
 class CreateGroceries < ActiveRecord::Migration[5.2]
   def change
     create_table :groceries do |t|
-      t.string :name, null: false
-      t.date :expiration_date, null: false
-      t.string :quantity, null: false
-      t.money :price, null: false
+      t.string :name
+      t.date :expiration_date
+      t.string :quantity
+      t.money :price
 
       t.timestamps
     end
