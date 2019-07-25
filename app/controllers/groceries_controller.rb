@@ -48,7 +48,6 @@ class GroceriesController < OpenReadController
 
   # Only allow a trusted parameter "white list" through.
   def grocery_params
-    params.require(:grocery).permit(:name, :expiration_date, :quantity,
-                                    :price, :notes, :user_id)
+    params.require(:grocery).permit(:name, :expiration_date, :quantity, :price, :notes, :user_id)
   end
 end
