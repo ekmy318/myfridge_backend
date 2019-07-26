@@ -19,7 +19,7 @@ class GrocerySerializer < ActiveModel::Serializer
       return 'Expired!'
     elsif days.to_i.zero?
       return 'Expires today!'
-    elsif days.to_i == 2
+    elsif days.to_i == 1
       return 'Expires tomorrow!'
     else days.to_i
     end
