@@ -2,7 +2,7 @@
 
 class GrocerySerializer < ActiveModel::Serializer
   belongs_to :user
-  attributes :id, :name, :expiration_date, :quantity, :price, :notes, :editable, :days_until
+  attributes :id, :name, :expiration_date, :quantity, :price, :notes, :editable, :days_until, :date_format
 
   def editable
     scope == object.user
@@ -15,7 +15,18 @@ class GrocerySerializer < ActiveModel::Serializer
     else
       date_till = Date.new(object.expiration_date.year, object.expiration_date.month, object.expiration_date.day)
     days = (date_till - today)
-    days.to_i
+    if days.to_i == 0
+      return 'Expires today!'
+    else days.to_i
+    end
+    end
+  end
+
+  def date_format
+    if object.expiration_date == nil
+      return 'No date provided'
+    else object.expiration_date.to_formatted_s(:long)
+      # Date::DATE_FORMATS[:month_day_comma_year] = "%b %e, %Y"
     end
   end
 end
