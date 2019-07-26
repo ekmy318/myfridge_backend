@@ -15,8 +15,12 @@ class GrocerySerializer < ActiveModel::Serializer
     else
       date_till = Date.new(object.expiration_date.year, object.expiration_date.month, object.expiration_date.day)
     days = (date_till - today)
-    if days.to_i == 0
+    if days.to_i.negative?
+      return 'Expired!'
+    elsif days.to_i.zero?
       return 'Expires today!'
+    elsif days.to_i == 2
+      return 'Expires tomorrow!'
     else days.to_i
     end
     end
@@ -26,7 +30,6 @@ class GrocerySerializer < ActiveModel::Serializer
     if object.expiration_date == nil
       return 'No date provided'
     else object.expiration_date.to_formatted_s(:long)
-      # Date::DATE_FORMATS[:month_day_comma_year] = "%b %e, %Y"
     end
   end
 end
