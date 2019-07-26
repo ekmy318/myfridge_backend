@@ -5,7 +5,7 @@ class GroceriesController < OpenReadController
 
   # GET /groceries
   def index
-    @groceries = current_user.groceries.all
+    @groceries = current_user.groceries.all.order(:expiration_date)
     render json: @groceries
   end
 
